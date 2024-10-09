@@ -10,6 +10,7 @@ public class PremiumCustomer implements Customer {
 
     private String memberShipId;
 
+
     public PremiumCustomer(String name, String membershipId) {
         this.name = name;
         this.memberShipId = membershipId;

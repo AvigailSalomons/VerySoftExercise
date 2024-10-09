@@ -4,28 +4,28 @@ import java.util.List;
 
 public class Bookstore {
     public static void main(String[] args) {
-        // יצירת ספרים מסוגים שונים
+        //Creating different types of books
         Book fictionBook = new FictionBook("The Great Gatsby", "F. Scott Fitzgerald", 100, "Drama");
         Book nonFictionBook = new NonFictionBook("Sapiens", "Yuval Noah Harari", 120, "History");
 
-        // יצירת לקוחות רגילים ופרימיום
+        // Creating regular and premium customers
         Customer regularCustomer = new RegularCustomer("John Doe");
         Customer premiumCustomer = new PremiumCustomer("Jane Smith", "MEM12345");
 
-        // הוספת ספרים לרכישה על ידי הלקוחות
+        // Adding books for purchase by customers
         regularCustomer.buyBook(fictionBook);
         premiumCustomer.buyBook(nonFictionBook);
 
-        // הצגת הספרים שנרכשו
+        // Displaying the purchased books
         System.out.println(regularCustomer.getName() + " purchased: " + regularCustomer.getPurchasedBooks().get(0).getTitle());
         System.out.println(premiumCustomer.getName() + " purchased: " + premiumCustomer.getPurchasedBooks().get(0).getTitle());
 
-        // הצגת הספרים שנרכשו והנחות ללקוחות רגילים ופרימיום
+        // Presentation of purchased books and discounts for regular and premium customers
         displayPurchasedBooks(regularCustomer);
         displayPurchasedBooks(premiumCustomer);
     }
 
-    // מתודה להצגת הספרים שנרכשו והנחות
+    // Thank you for showing the purchased books and discounts
     public static void displayPurchasedBooks(Customer customer) {
         System.out.println("Customer: " + customer.getName());
         List<Book> purchasedBooks = customer.getPurchasedBooks();
@@ -33,12 +33,12 @@ public class Bookstore {
             double discount = book.calculateDiscount();
 //            double discountedPrice = book.getPrice() - (book.getPrice() * discount);
 
-            // במידה והלקוח הוא פרימיום, מוסיפים הנחה של 5% נוספים
+            // If the customer is premium, add an additional 5% discount
             if (customer instanceof PremiumCustomer) {
-                discount -= book.getPrice() * 0.05; // הנחה נוספת של 5%
+                discount -= book.getPrice() * 0.05; //additional discount of 5%
             }
 
-            // הצגת פרטי הספר והמחיר לאחר הנחה
+            //Displaying the book details and price after discount
             System.out.println("Book: " + book.getTitle() + " by " + book.getAuthor());
             System.out.println("Original Price: " + book.getPrice());
             System.out.println("Discounted Price: " + discount);
